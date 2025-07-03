@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.sqlite3
+venv/
+.env
+.DS_Store
+.vscode/
+**/migrations/__pycache__/
+**/migrations/*.pyc
