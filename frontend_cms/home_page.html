@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>{{ page.title }}</h1>
+  <p>{{ page.introduction }}</p>
+  {{ page.body|richtext }}
+
+  {# Render the StreamField content #}
+  {% for block in page.content %}
+    {% if block.block_type == 'image_and_text' %}
+      <div class="image-text-row">
+        <img src="{{ block.value.image.url }}" alt="">
+        <div>{{ block.value.text|richtext }}</div>
+      </div>
+    {% elif block.block_type == 'cta' %}
+      <a href="{{ block.value.button_url }}" class="cta-button">
+        {{ block.value.button_text }}
+      </a>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
